@@ -54,7 +54,7 @@ import toast, { Toaster } from "react-hot-toast";
 import useGetUser from "./hooks/useGetUser";
 import useGetAllUser from "./hooks/useGetAllUser";
 import useGetAllCGIData from "./hooks/useGetAllCGIData";
-import useGetUserCGIData from "./hooks/useGetUserCGIData";
+
 import { removeUserInfo } from "./utils";
 
 // --- Components ---
@@ -271,6 +271,7 @@ const Navbar = ({
                 </button>
               </>
             )}
+
             <button
               onClick={() => {
                 onAdminClick();
@@ -804,10 +805,10 @@ const RegistrationForm = ({
     const newUser: User = {
       id: Math.random().toString(36).substr(2, 9),
       name: formData.name,
-      email: formData.email,
+      email: formData.email ? formData.email : null,
       mobile: formData.mobile,
       whatsapp: formData.whatsapp,
-      location: formData.location,
+      location: formData.location ? formData.location : null,
       role: type,
       isLoggedIn: true,
     };
